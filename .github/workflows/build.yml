@@ -1,0 +1,37 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.1
+      with:
+        node-version: 20
+        
+    - run: npm install -g bats
+    
+    - run: bats -v
+
+    - name: Build Jekyll Site
+      env:
+        GITALK_CLIENT_ID: ${{ secrets.GITALK_CLIENT_ID }}
+        GITALK_CLIENT_SECRET: ${{ secrets.GITALK_CLIENT_SECRET }}
+      run: |
+        bundle exec jekyll build
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        name: 'my-blog'
+        path: '_site'
+        
