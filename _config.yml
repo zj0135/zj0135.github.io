@@ -1,8 +1,8 @@
 name: "zj0135 blog"
 description: "个人博客"
 
-avatar: 
-favicon: 
+avatar: https://zj0135.github.io/images/avatar.png
+favicon: https://zj0135.github.io/images/favicon.ico
 
 navigation:
   - name: 首页
