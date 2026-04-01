@@ -12,7 +12,7 @@ author: zhangj
 
 平时要删除指定下标的元素时可能会直接这样做，但当元素位于集合靠前的位置时，删除后所有元素都需要向前移动一位。
 
-```plain
+```csharp
  var list = Enumerable.Range(1, 100).Select(x => Guid.NewGuid().ToString()).ToList();
  var index = 50;
  list.RemoveAt(index);
@@ -20,7 +20,7 @@ author: zhangj
 
 我们可以将集合中最后一个元素的值赋给当前需要删除的下标位置，然后在删除最后一个元素。
 
-```plain
+```csharp
 var list = Enumerable.Range(1, 100).Select(x => Guid.NewGuid().ToString()).ToList();
 var index = 50;
 list[index] = list[^1];
